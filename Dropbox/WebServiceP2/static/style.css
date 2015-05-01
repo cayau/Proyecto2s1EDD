@@ -1,0 +1,12 @@
+.title {
+    color: blue;
+}
+lable, input{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+#button{
+    background-color: orange;
+    border-bottom-color: gray;
+    padding: 5px;
+}

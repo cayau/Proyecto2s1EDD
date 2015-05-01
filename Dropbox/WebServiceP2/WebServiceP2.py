@@ -1,39 +1,48 @@
-import json, random
-from flask import Flask, request, abort, render_template, json, jsonify
-
+from flask import Flask, request, render_template, json, jsonify
+from wtforms import Form, BooleanField, TextField, PasswordField, validators
+from arbolB import BTree
+from ListaDobleUsuarios import DoubleListUser
 app = Flask(__name__)
 
-# def abort_if_user_doesnt_exist(user_id):
-#     if user_id not in USERS:
-#         abort(404, message="User {} doesn't exist".format(user_id))
+miarbol = BTree(5)
+users = DoubleListUser()
 
 @app.route('/')
 def index():
     return render_template('hello.html', name='Estructuras De Datos')
 
 # LogIn
-#   Devuelve true si esta registrado el usuario
-@app.route('/login', methods=['POST'])
+#   Devuelve true si el usuario exite
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return 'True'
+    return render_template('login.html')
 
-#   Muestra la lista completa de vuelos
-@app.route('/vuelos', methods=['GET'])
-def vuelos():
-    # res=[]
-    # avlVuelos.inorder(avlVuelos.rootNode, res)
-    # return json.dumps(res)
-    return True
+@app.route('/insert/<id>', methods=['GET'])
+def insert(id):
+    miarbol.insert(id)
+    return id, True
 
-@app.route('/vuelo/id', methods=['POST'])
-def vuelosId():
-    id_fly = request.form['id_fly']
-    # return json.dumps(res)
-    return id_fly
+# Registro
+@app.route('/registrarse')
+def registrarse():
+    return render_template('Registro.html')
+
+@app.route('/registro_terminado', methods=['POST'])
+def registro_terminado():
+    correo=request.form['correo']
+    password=request.form['password']
+    res = users.append(correo, password)
+    return render_template('RegistroTerminado.html', correo=correo, password=password, created=res)
+
+# Usuarios
+@app.route('/usuarios')
+def showUsers():
+    res = users.show()
+    return json.dumps(res)
 
 if __name__ == '__main__':
     app.run(
-        # host="0.0.0.0",
-        # port=int("5000")
+        host="127.0.0.1",
+        port=int("5000"),
         debug=True
     )
