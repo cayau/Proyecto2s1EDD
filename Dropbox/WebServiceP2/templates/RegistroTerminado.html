@@ -5,17 +5,20 @@
     </head>
     <body>
         <div id="container">
-            <div class="title">
-                <h1>Registro finlizado</h1>
-            </div>
-            <div id="content">
-                Hola <strong>{{correo}}</strong> ({{password}})!
-                {% if created %}
-                    <h3>Usuario registrado con exito!</h3>
-                    <p>Busque en su correo un correo de confirmacion de cuenta</p>
-                {% else %}
-                    <h3>El usuario no pude ser registrado</h3>
-                {% endif %}
+            <div class="wrap">
+                <div class="title">
+                    <h1>Registro finlizado</h1>
+                </div>
+                <div id="content">
+                    Hola <strong>{{correo}}</strong> ({{password}})!
+                    {% if created %}
+                        <h3>Usuario registrado con exito!</h3>
+                        <p>Busque en su correo un correo de confirmacion de cuenta</p>
+                    {% else %}
+                        <h3>El usuario no pude ser registrado</h3>
+                    {% endif %}
+                    <a href="/">Inicio</a>
+                </div>
             </div>
         </div>
     </body>

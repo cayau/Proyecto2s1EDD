@@ -1,7 +1,26 @@
-.title {
-    color: blue;
+body{
+    font-family: 'Ubuntu','Helvetica';
 }
-lable, input{
+#container{
+    background-color: azure;
+    padding: 10px;
+    min-height: 400px;
+}
+.wrap{
+    min-height: 400px;
+    width: 550px;
+    background-color: white;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+}
+.title {
+    color: steelblue;
+    text-align: center;
+}
+label, input{
     margin-bottom: 10px;
     margin-top: 10px;
 }

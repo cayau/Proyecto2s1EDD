@@ -5,17 +5,19 @@
     </head>
     <body>
         <div id="container">
-            <div class="title">
-                <h1>Registro de Usuario</h1>
-            </div>
-            <div id="content">
-                <form method="post" action="{{ url_for('registro_terminado') }}">
-                  <label for="yourname">Por favor ingrese su correo:</label>
-                  <input type="text" name="correo" /><br />
-                  <label for="youremail">Por favor ingrese su contrasena:</label>
-                  <input type="text" name="password" /><br />
-                  <input type="submit" id="button" />
-                </form>
+            <div class="wrap">
+                <div class="title">
+                    <h1>Registro de Usuario</h1>
+                </div>
+                <div id="content">
+                    <form method="post" action="{{ url_for('registro_terminado') }}">
+                      <label for="yourname">Por favor ingrese su correo:</label>
+                      <input type="text" name="correo" /><br />
+                      <label for="youremail">Por favor ingrese su contrasena:</label>
+                      <input type="password" name="password" /><br />
+                      <input type="submit" id="button" />
+                    </form>
+                </div>
             </div>
         </div>
     </body>

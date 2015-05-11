@@ -1,10 +1,11 @@
-from flask import Flask, request, render_template, json, jsonify
-from wtforms import Form, BooleanField, TextField, PasswordField, validators
-from arbolB import BTree
+from flask import Flask, request, render_template, json
+from arbolBCarpetas import BTree
+from arbolAVLArchivos import AVLTree
 from ListaDobleUsuarios import DoubleListUser
 app = Flask(__name__)
 
 miarbol = BTree(5)
+archivos = AVLTree()
 users = DoubleListUser()
 
 @app.route('/')
@@ -17,10 +18,38 @@ def index():
 def login():
     return render_template('login.html')
 
-@app.route('/insert/<id>', methods=['GET'])
-def insert(id):
-    miarbol.insert(id)
-    return id, True
+@app.route('/carpetas', methods=['GET'])
+def insert():
+    miarbol.insertar(5)
+    miarbol.insertar(6)
+    miarbol.insertar(7)
+    miarbol.insertar(8)
+    # miarbol.insertar(10)
+    # miarbol.insertar(11)
+    # miarbol.insertar(12)
+    # miarbol.insertar(14)
+    # miarbol.insertar(15)
+    # miarbol.insertar(16)
+    # miarbol.insertar(18)
+    # miarbol.insertar(19)
+    # miarbol.insertar(20)
+    # miarbol.insertar(21)
+    # miarbol.insertar(30)
+    # miarbol.insertar(35)
+    # miarbol.insertar(39)
+    # miarbol.insertar(46)
+    # miarbol.insertar(56)
+    # miarbol.insertar(66)
+    # miarbol.insertar(70)
+    # miarbol.insertar(71)
+    # miarbol.insertar(72)
+    # miarbol.insertar(75)
+    # miarbol.insertar(81)
+    # miarbol.insertar(82)
+
+    res = miarbol.getDot()
+
+    return str(res)
 
 # Registro
 @app.route('/registrarse')
@@ -37,12 +66,14 @@ def registro_terminado():
 # Usuarios
 @app.route('/usuarios')
 def showUsers():
-    res = users.show()
-    return json.dumps(res)
+    # res = users.show()
+    res = users.getDot()
+    print(res)
+    return str(res)
 
 if __name__ == '__main__':
     app.run(
-        host="127.0.0.1",
-        port=int("5000"),
+        host="0.0.0.0",
+        # port=int("5000"),
         debug=True
     )

@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-<title>Proyecto 2 (Dropbox)</title>
-<h1>Bienvenido a el Web Service de el Proyecto 2 (Dropbox)</h1>
-{% if name %}
-    <h2>{{ name }}!</h2>
-    <h3>Web Service en ejecucion</h3>
-{% else %}
-    <h3>Web Service en ejecucion</h3>
-{% endif %}
-</body>
+    <head>
+        <title>DropBox</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="wrap">
+                <div class="title">
+                    <h1>DropBox</h1>
+                </div>
+                <div id="content">
+                    <h2>Bienvenido</h2>
+                    <p><a href="/registrarse">Registrarse</a></p>
+                    <p></p><a href="/login">Iniciar Sesion</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
